@@ -205,7 +205,9 @@ def evaluate_on_test(model: Pipeline, df_test: pd.DataFrame) -> dict[str, float]
     logger.info(f"  F1:       {metrics['f1']:.4f}")
     logger.info(f"  Recall:   {metrics['recall']:.4f}")
     logger.info(f"  Accuracy: {metrics['accuracy']:.4f}")
-    logger.info("\n" + classification_report(y_test, y_pred, target_names=["no", "yes"]))
+    logger.info(
+        "\n" + classification_report(y_test, y_pred, target_names=["no", "yes"])
+    )
 
     return metrics
 
@@ -234,8 +236,7 @@ def load_model() -> Pipeline:
     """
     if not MODEL_PATH.exists():
         raise FileNotFoundError(
-            f"模型文件不存在: {MODEL_PATH}\n"
-            f"请先运行训练: python -m app.model --train"
+            f"模型文件不存在: {MODEL_PATH}\n请先运行训练: python -m app.model --train"
         )
     with open(MODEL_PATH, "rb") as f:
         model = pickle.load(f)
