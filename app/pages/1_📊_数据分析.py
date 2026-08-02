@@ -3,21 +3,20 @@
 import sys
 from pathlib import Path
 
+import pandas as pd
 import streamlit as st
 
 # Ensure the app package is importable when run as a script
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
-from app.analysis import (  # noqa: E402
-    get_overview,
+from app.analysis import (    get_overview,
     plot_categorical_distribution,
     plot_correlation_heatmap,
     plot_numeric_distribution,
     plot_scatter,
     plot_time_trends,
 )
-from app.data_loader import (  # noqa: E402
-    CATEGORICAL_COLS,
+from app.data_loader import (    CATEGORICAL_COLS,
     NUMERIC_COLS,
     get_missing_stats,
     load_train_data,

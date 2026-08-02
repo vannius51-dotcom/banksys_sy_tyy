@@ -223,7 +223,6 @@ def plot_time_trends(df: pd.DataFrame, dimension: str) -> go.Figure:
             lambda m: month_order.index(m) if m in month_order else 99
         )
         rate_df = rate_df.sort_values("_order")
-        x_col = "month"
         title = "各月份认购率趋势"
     elif dimension == "day_of_week":
         day_order = ["mon", "tue", "wed", "thu", "fri"]
@@ -236,7 +235,6 @@ def plot_time_trends(df: pd.DataFrame, dimension: str) -> go.Figure:
             lambda d: day_order.index(d) if d in day_order else 99
         )
         rate_df = rate_df.sort_values("_order")
-        x_col = "day_of_week"
         title = "各星期几联系效果对比"
     else:
         raise ValueError(f"不支持的时间维度: {dimension}")
@@ -265,7 +263,7 @@ def plot_time_trends(df: pd.DataFrame, dimension: str) -> go.Figure:
             y=rate_df["认购率(%)"],
             mode="lines+markers",
             marker_color="#2ca02c",
-            line=dict(width=3),
+            line={"width": 3},
         ),
         secondary_y=True,
     )

@@ -10,8 +10,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.predict import (  # noqa: E402
-    CATEGORICAL_OPTIONS,
+from app.predict import (    CATEGORICAL_OPTIONS,
     NUMERIC_RANGES,
     PREDICTION_CATEGORICAL_COLS,
     PREDICTION_NUMERIC_COLS,

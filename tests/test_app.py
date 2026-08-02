@@ -9,8 +9,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 def test_app_imports() -> None:
     """Verify core app modules are importable."""
-    import app  # noqa: F401
-    import app.main  # noqa: F401
+    import app
+    import app.main
 
 
 def test_main_has_title() -> None:
