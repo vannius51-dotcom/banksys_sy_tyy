@@ -37,8 +37,11 @@ def sample_df() -> pd.DataFrame:
             "job": ["admin.", "services", "blue-collar", "entrepreneur", "admin."],
             "marital": ["married", "single", "divorced", "married", "single"],
             "education": [
-                "high.school", "university.degree", "basic.9y",
-                "high.school", "university.degree",
+                "high.school",
+                "university.degree",
+                "basic.9y",
+                "high.school",
+                "university.degree",
             ],
             "default": ["no", "unknown", "no", "yes", "no"],
             "housing": ["yes", "no", "yes", "yes", "no"],
@@ -46,7 +49,13 @@ def sample_df() -> pd.DataFrame:
             "contact": ["cellular", "cellular", "telephone", "cellular", "cellular"],
             "month": ["may", "jun", "jul", "aug", "may"],
             "day_of_week": ["mon", "tue", "wed", "thu", "fri"],
-            "poutcome": ["nonexistent", "failure", "nonexistent", "success", "nonexistent"],
+            "poutcome": [
+                "nonexistent",
+                "failure",
+                "nonexistent",
+                "success",
+                "nonexistent",
+            ],
             "subscribe": ["no", "yes", "no", "yes", "no"],
         }
     )

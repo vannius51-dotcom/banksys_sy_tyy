@@ -39,20 +39,14 @@ def small_train_df() -> pd.DataFrame:
         "nr_employed": np.random.uniform(4900, 5300, n).tolist(),
         "job": _choice(["admin.", "blue-collar", "technician", "services"], n),
         "marital": _choice(["married", "single", "divorced"], n),
-        "education": _choice(
-            ["high.school", "university.degree", "basic.9y"], n
-        ),
+        "education": _choice(["high.school", "university.degree", "basic.9y"], n),
         "default": _choice(["no", "yes", "unknown"], n),
         "housing": _choice(["yes", "no", "unknown"], n),
         "loan": _choice(["yes", "no", "unknown"], n),
         "contact": _choice(["cellular", "telephone"], n),
         "month": _choice(["may", "jun", "jul", "aug"], n),
-        "day_of_week": _choice(
-            ["mon", "tue", "wed", "thu", "fri"], n
-        ),
-        "poutcome": _choice(
-            ["nonexistent", "failure", "success"], n
-        ),
+        "day_of_week": _choice(["mon", "tue", "wed", "thu", "fri"], n),
+        "poutcome": _choice(["nonexistent", "failure", "success"], n),
         "subscribe": _choice_p(["yes", "no"], n, [0.13, 0.87]),
     }
     return pd.DataFrame(data)
@@ -85,20 +79,14 @@ def small_test_df() -> pd.DataFrame:
         "nr_employed": np.random.uniform(4900, 5300, n).tolist(),
         "job": _choice(["admin.", "blue-collar", "technician", "services"], n),
         "marital": _choice(["married", "single", "divorced"], n),
-        "education": _choice(
-            ["high.school", "university.degree", "basic.9y"], n
-        ),
+        "education": _choice(["high.school", "university.degree", "basic.9y"], n),
         "default": _choice(["no", "yes", "unknown"], n),
         "housing": _choice(["yes", "no", "unknown"], n),
         "loan": _choice(["yes", "no", "unknown"], n),
         "contact": _choice(["cellular", "telephone"], n),
         "month": _choice(["may", "jun", "jul", "aug"], n),
-        "day_of_week": _choice(
-            ["mon", "tue", "wed", "thu", "fri"], n
-        ),
-        "poutcome": _choice(
-            ["nonexistent", "failure", "success"], n
-        ),
+        "day_of_week": _choice(["mon", "tue", "wed", "thu", "fri"], n),
+        "poutcome": _choice(["nonexistent", "failure", "success"], n),
         "subscribe": _choice_p(["yes", "no"], n, [0.13, 0.87]),
     }
     return pd.DataFrame(data)

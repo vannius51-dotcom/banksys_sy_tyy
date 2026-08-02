@@ -70,7 +70,9 @@ if analysis_mode == "📋 数据概览":
         subscribe_counts = df["subscribe"].value_counts()
         st.bar_chart(
             subscribe_counts,
-            color=["#2ca02c" if x == "yes" else "#d62728" for x in subscribe_counts.index],
+            color=[
+                "#2ca02c" if x == "yes" else "#d62728" for x in subscribe_counts.index
+            ],
             horizontal=True,
         )
     with col_b:
@@ -135,7 +137,12 @@ elif analysis_mode == "🔗 相关性分析":
         with col1:
             x_col = st.selectbox("X 轴", NUMERIC_COLS, key="scatter_x")
         with col2:
-            y_col = st.selectbox("Y 轴", NUMERIC_COLS, index=min(1, len(NUMERIC_COLS) - 1), key="scatter_y")
+            y_col = st.selectbox(
+                "Y 轴",
+                NUMERIC_COLS,
+                index=min(1, len(NUMERIC_COLS) - 1),
+                key="scatter_y",
+            )
 
         fig = plot_scatter(df, x_col, y_col)
         st.plotly_chart(fig, use_container_width=True)
@@ -144,7 +151,9 @@ elif analysis_mode == "🔗 相关性分析":
 elif analysis_mode == "📅 时间趋势":
     st.header("📅 时间趋势分析")
 
-    time_dim = st.radio("选择时间维度", ["month (月份)", "day_of_week (星期几)"], horizontal=True)
+    time_dim = st.radio(
+        "选择时间维度", ["month (月份)", "day_of_week (星期几)"], horizontal=True
+    )
 
     dim = "month" if "month" in time_dim else "day_of_week"
     fig = plot_time_trends(df, dim)
@@ -154,8 +163,18 @@ elif analysis_mode == "📅 时间趋势":
     st.subheader("📋 详细数据")
     if dim == "month":
         month_order = [
-            "jan", "feb", "mar", "apr", "may", "jun",
-            "jul", "aug", "sep", "oct", "nov", "dec",
+            "jan",
+            "feb",
+            "mar",
+            "apr",
+            "may",
+            "jun",
+            "jul",
+            "aug",
+            "sep",
+            "oct",
+            "nov",
+            "dec",
         ]
     else:
         month_order = ["mon", "tue", "wed", "thu", "fri"]

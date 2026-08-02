@@ -60,11 +60,15 @@ if predict_clicked:
             if "会认购" in label:
                 st.success(f"### {label}")
                 st.metric("认购概率", f"{confidence:.1%}")
-                st.progress(min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}")
+                st.progress(
+                    min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}"
+                )
             else:
                 st.error(f"### {label}")
                 st.metric("认购概率", f"{confidence:.1%}")
-                st.progress(min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}")
+                st.progress(
+                    min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}"
+                )
 
             # Show input summary
             with st.expander("📋 查看输入详情"):
