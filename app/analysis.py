@@ -107,14 +107,21 @@ def plot_categorical_distribution(df: pd.DataFrame, col: str) -> go.Figure:
     for status, color in [("yes", "#2ca02c"), ("no", "#d62728")]:
         sub = count_df[count_df[TARGET_COL] == status]
         fig.add_trace(
-            go.Bar(name=status, x=sub[col], y=sub["count"], marker_color=color, showlegend=True),
+            go.Bar(
+                name=status,
+                x=sub[col],
+                y=sub["count"],
+                marker_color=color,
+                showlegend=True,
+            ),
             row=1,
             col=1,
         )
 
     # Subscription rate
     colors_rate = [
-        "#2ca02c" if v > rate_df["认购率(%)"].mean() else "#d62728" for v in rate_df["认购率(%)"]
+        "#2ca02c" if v > rate_df["认购率(%)"].mean() else "#d62728"
+        for v in rate_df["认购率(%)"]
     ]
     fig.add_trace(
         go.Bar(
@@ -193,8 +200,18 @@ def plot_time_trends(df: pd.DataFrame, dimension: str) -> go.Figure:
     """
     if dimension == "month":
         month_order = [
-            "jan", "feb", "mar", "apr", "may", "jun",
-            "jul", "aug", "sep", "oct", "nov", "dec",
+            "jan",
+            "feb",
+            "mar",
+            "apr",
+            "may",
+            "jun",
+            "jul",
+            "aug",
+            "sep",
+            "oct",
+            "nov",
+            "dec",
         ]
         rate_df = (
             df.groupby("month")[TARGET_COL]
@@ -230,8 +247,13 @@ def plot_time_trends(df: pd.DataFrame, dimension: str) -> go.Figure:
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig.add_trace(
-        go.Bar(name="联系次数", x=rate_df[dimension], y=count_df["联系次数"],
-               marker_color="#1f77b4", opacity=0.5),
+        go.Bar(
+            name="联系次数",
+            x=rate_df[dimension],
+            y=count_df["联系次数"],
+            marker_color="#1f77b4",
+            opacity=0.5,
+        ),
         secondary_y=False,
     )
     fig.add_trace(

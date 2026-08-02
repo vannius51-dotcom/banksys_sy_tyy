@@ -11,12 +11,20 @@ import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report, f1_score, recall_score, roc_auc_score
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    f1_score,
+    recall_score,
+    roc_auc_score,
+)
 from sklearn.model_selection import StratifiedKFold, cross_validate
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 # ── Feature definitions ──────────────────────────────────
@@ -61,7 +69,14 @@ def build_preprocessor() -> ColumnTransformer:
     """
     numeric_transformer = Pipeline([("scaler", StandardScaler())])
     categorical_transformer = Pipeline(
-        [("onehot", OneHotEncoder(drop="first", handle_unknown="ignore", sparse_output=False))]
+        [
+            (
+                "onehot",
+                OneHotEncoder(
+                    drop="first", handle_unknown="ignore", sparse_output=False
+                ),
+            )
+        ]
     )
 
     preprocessor = ColumnTransformer(

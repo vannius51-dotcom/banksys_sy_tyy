@@ -42,7 +42,11 @@ if reset_clicked:
 # ── Prediction result ────────────────────────────────────
 if predict_clicked:
     # Validate: check for missing fields (shouldn't happen with defaults, but guard)
-    missing = [k for k, v in values.items() if v is None or (isinstance(v, str) and v.strip() == "")]
+    missing = [
+        k
+        for k, v in values.items()
+        if v is None or (isinstance(v, str) and v.strip() == "")
+    ]
     if missing:
         st.error(f"❌ 以下字段未填写: {', '.join(missing)}")
     else:

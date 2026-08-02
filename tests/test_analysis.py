@@ -36,7 +36,10 @@ def sample_df() -> pd.DataFrame:
             "nr_employed": [5000.0, 5100.0, 5050.0, 5200.0, 4990.0],
             "job": ["admin.", "services", "blue-collar", "entrepreneur", "admin."],
             "marital": ["married", "single", "divorced", "married", "single"],
-            "education": ["high.school", "university.degree", "basic.9y", "high.school", "university.degree"],
+            "education": [
+                "high.school", "university.degree", "basic.9y",
+                "high.school", "university.degree",
+            ],
             "default": ["no", "unknown", "no", "yes", "no"],
             "housing": ["yes", "no", "yes", "yes", "no"],
             "loan": ["no", "yes", "no", "yes", "no"],
