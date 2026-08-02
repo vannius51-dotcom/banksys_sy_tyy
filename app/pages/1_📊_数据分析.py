@@ -71,9 +71,7 @@ if analysis_mode == "📋 数据概览":
         subscribe_counts = df["subscribe"].value_counts()
         st.bar_chart(
             subscribe_counts,
-            color=[
-                "#2ca02c" if x == "yes" else "#d62728" for x in subscribe_counts.index
-            ],
+            color=["#2ca02c" if x == "yes" else "#d62728" for x in subscribe_counts.index],
             horizontal=True,
         )
     with col_b:
@@ -152,9 +150,7 @@ elif analysis_mode == "🔗 相关性分析":
 elif analysis_mode == "📅 时间趋势":
     st.header("📅 时间趋势分析")
 
-    time_dim = st.radio(
-        "选择时间维度", ["month (月份)", "day_of_week (星期几)"], horizontal=True
-    )
+    time_dim = st.radio("选择时间维度", ["month (月份)", "day_of_week (星期几)"], horizontal=True)
 
     dim = "month" if "month" in time_dim else "day_of_week"
     fig = plot_time_trends(df, dim)

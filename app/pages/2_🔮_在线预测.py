@@ -8,6 +8,7 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from app.predict import make_prediction, render_prediction_form
+
 st.set_page_config(page_title="在线预测", page_icon="🔮", layout="wide")
 
 st.title("🔮 定期存款认购预测")
@@ -42,9 +43,7 @@ if reset_clicked:
 if predict_clicked:
     # Validate: check for missing fields (shouldn't happen with defaults, but guard)
     missing = [
-        k
-        for k, v in values.items()
-        if v is None or (isinstance(v, str) and v.strip() == "")
+        k for k, v in values.items() if v is None or (isinstance(v, str) and v.strip() == "")
     ]
     if missing:
         st.error(f"❌ 以下字段未填写: {', '.join(missing)}")
@@ -59,15 +58,11 @@ if predict_clicked:
             if "会认购" in label:
                 st.success(f"### {label}")
                 st.metric("认购概率", f"{confidence:.1%}")
-                st.progress(
-                    min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}"
-                )
+                st.progress(min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}")
             else:
                 st.error(f"### {label}")
                 st.metric("认购概率", f"{confidence:.1%}")
-                st.progress(
-                    min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}"
-                )
+                st.progress(min(float(confidence), 1.0), text=f"置信度 {confidence:.1%}")
 
             # Show input summary
             with st.expander("📋 查看输入详情"):

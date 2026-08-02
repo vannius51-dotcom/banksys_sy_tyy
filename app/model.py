@@ -22,9 +22,7 @@ from sklearn.model_selection import StratifiedKFold, cross_validate
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
 # ── Feature definitions ──────────────────────────────────
@@ -72,9 +70,7 @@ def build_preprocessor() -> ColumnTransformer:
         [
             (
                 "onehot",
-                OneHotEncoder(
-                    drop="first", handle_unknown="ignore", sparse_output=False
-                ),
+                OneHotEncoder(drop="first", handle_unknown="ignore", sparse_output=False),
             )
         ]
     )
@@ -161,9 +157,7 @@ def train_and_evaluate(
         mean_f1 = float(np.mean(scores["test_f1"]))
         mean_recall = float(np.mean(scores["test_recall"]))
         cv_results[name] = {"auc": mean_auc, "f1": mean_f1, "recall": mean_recall}
-        logger.info(
-            f"  {name}: AUC={mean_auc:.4f}, F1={mean_f1:.4f}, Recall={mean_recall:.4f}"
-        )
+        logger.info(f"  {name}: AUC={mean_auc:.4f}, F1={mean_f1:.4f}, Recall={mean_recall:.4f}")
         if mean_auc > best_auc:
             best_auc = mean_auc
             best_name = name
@@ -205,9 +199,7 @@ def evaluate_on_test(model: Pipeline, df_test: pd.DataFrame) -> dict[str, float]
     logger.info(f"  F1:       {metrics['f1']:.4f}")
     logger.info(f"  Recall:   {metrics['recall']:.4f}")
     logger.info(f"  Accuracy: {metrics['accuracy']:.4f}")
-    logger.info(
-        "\n" + classification_report(y_test, y_pred, target_names=["no", "yes"])
-    )
+    logger.info("\n" + classification_report(y_test, y_pred, target_names=["no", "yes"]))
 
     return metrics
 
