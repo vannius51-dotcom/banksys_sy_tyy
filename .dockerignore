@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+
+# Virtual environments
+venv
+.venv
+envproj
+
+# IDE
+.vscode
+.idea
+
+# Data (mounted or loaded separately)
+data/
+
+# Models (built at runtime)
+models/
+
+# Tests (not needed in production image)
+tests/
+
+# CI/CD
+.github
+
+# Docs
+standards/
+standards-template/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Coverage / lint cache
+.coverage
+htmlcov
+.pytest_cache
+.ruff_cache

@@ -8,24 +8,24 @@
 
 ## 当前状态 (最后更新: 2026-08-02 · by Claude)
 
-- **阶段**:`初始化 — 六步流程第 ① 步前(需求确认中)`
-- **上一步完成**:`standards/00-project-context.md 与 01-requirements.md 已填写初稿`
-- **下一步 (TODO 第一条)**:`人工确认需求文档与项目上下文,确认后进入第 ① 步(建仓 + 配 Secrets)`
-- **阻塞项**:`等待人工 Review 并确认 standards/00 与 01 内容无误`
+- **阶段**:`六步流程第 ④/⑤ 步 — 代码完成,准备提交 PR`
+- **上一步完成**:`四个模块全部编码完成:项目骨架、数据分析页、模型训练、在线预测`
+- **下一步 (TODO 第一条)**:`提交代码 → push → 创建 PR;CI 在 GitHub Actions 上检查`
+- **阻塞项**:`本地无 Python 3.11 环境,本地 CI 自检暂无法执行;依赖 GitHub Actions CI 兜底`
 
 ---
 
 ## 待办清单 (TODO,按优先级)
 
-- [ ] **人工确认**:阅读并确认 `standards/00-project-context.md` 与 `standards/01-requirements.md`
-- [ ] **① 建仓 + 配 Secrets**:用 `gh` 创建 GitHub 仓库 `banksys_sy_tyy`(开源);提示人类配置 `SSH_PRIVATE_KEY` / `SSH_HOST` / `SSH_USER` 三个 Secrets
-- [ ] **② 开 feature 分支**:从 `main` 切 `feature/1-project-init`,完成工程化骨架
-- [ ] **③ 模块 1 — 项目骨架**:目录结构、`requirements.txt`、`requirements-dev.txt`、`Dockerfile`、`.gitignore`、`.dockerignore`、CI/CD workflow(ci.yml + cd.yml)
-- [ ] **③ 模块 2 — US-2 数据分析页**:`data_loader.py` + `analysis.py` + `pages/1_📊_数据分析.py` + 测试
-- [ ] **③ 模块 3 — US-3 模型训练**:`model.py` + 训练脚本 + 评估逻辑 + 测试
-- [ ] **③ 模块 4 — US-4 在线预测**:`predict.py` + `pages/2_🔮_在线预测.py` + 测试
-- [ ] **④ 本地 CI 自检**:`ruff format --check .` + `ruff check .` + `pytest --cov --cov-fail-under=80`
-- [ ] **⑤ 触发 PR**:push + `gh pr create`;CI 在 PR 上复检(含 `docker build`)
+- [x] **人工确认**:阅读并确认 `standards/00-project-context.md` 与 `standards/01-requirements.md`
+- [x] **① 建仓 + 配 Secrets**:用 `gh` 创建 GitHub 仓库 `banksys_sy_tyy`(开源);提示人类配置 `SSH_PRIVATE_KEY` / `SSH_HOST` / `SSH_USER` 三个 Secrets
+- [x] **② 开 feature 分支**:从 `main` 切 `feature/1-project-init`,完成工程化骨架
+- [x] **③ 模块 1 — 项目骨架**:目录结构、`requirements.txt`、`requirements-dev.txt`、`Dockerfile`、`.gitignore`、`.dockerignore`、CI/CD workflow(ci.yml + cd.yml)
+- [x] **③ 模块 2 — US-2 数据分析页**:`data_loader.py` + `analysis.py` + `pages/1_📊_数据分析.py` + 测试
+- [x] **③ 模块 3 — US-3 模型训练**:`model.py` + 训练脚本 + 评估逻辑 + 测试
+- [x] **③ 模块 4 — US-4 在线预测**:`predict.py` + `pages/2_🔮_在线预测.py` + 测试
+- [ ] **④ 本地 CI 自检**:`ruff format --check .` + `ruff check .` + `pytest --cov --cov-fail-under=80`**(暂跳过 — 本地无 Python,依赖 CI)**
+- [ ] **⑤ 触发 PR**:push + `gh pr create`;CI 在 PR 上复检(含 `docker build`) ← **当前步骤**
 - [ ] **⑥ 人工审核 → 合并 → CD**:人工 Review + Merge → CD 自动部署 → 健康检查 `http://<HOST>:8899/_stcore/health`
 - [ ] 会话结束前更新本文件
 
@@ -46,7 +46,7 @@
 
 ## 已知坑 (GOTCHAS)
 
-- _暂无(项目刚初始化,尚未开始编码)_
+- **本地无 Python 3.11 环境**:Git Bash / PowerShell 均找不到 Python/conda/uv;解决:需手动安装 Python 3.11 或 conda 并创建虚拟环境;验证:安装后运行 `python --version` 确认版本为 3.11。
 
 ---
 
