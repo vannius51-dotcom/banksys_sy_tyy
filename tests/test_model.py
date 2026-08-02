@@ -37,19 +37,35 @@ def small_train_df() -> pd.DataFrame:
         "cons_conf_index": np.random.uniform(-50, -30, n).tolist(),
         "lending_rate3m": np.random.uniform(0.5, 5, n).tolist(),
         "nr_employed": np.random.uniform(4900, 5300, n).tolist(),
-        "job": np.random.choice(["admin.", "blue-collar", "technician", "services"], n).tolist(),
-        "marital": np.random.choice(["married", "single", "divorced"], n).tolist(),
-        "education": np.random.choice(["high.school", "university.degree", "basic.9y"], n).tolist(),
-        "default": np.random.choice(["no", "yes", "unknown"], n).tolist(),
-        "housing": np.random.choice(["yes", "no", "unknown"], n).tolist(),
-        "loan": np.random.choice(["yes", "no", "unknown"], n).tolist(),
-        "contact": np.random.choice(["cellular", "telephone"], n).tolist(),
-        "month": np.random.choice(["may", "jun", "jul", "aug"], n).tolist(),
-        "day_of_week": np.random.choice(["mon", "tue", "wed", "thu", "fri"], n).tolist(),
-        "poutcome": np.random.choice(["nonexistent", "failure", "success"], n).tolist(),
-        "subscribe": np.random.choice(["yes", "no"], n, p=[0.13, 0.87]).tolist(),
+        "job": _choice(["admin.", "blue-collar", "technician", "services"], n),
+        "marital": _choice(["married", "single", "divorced"], n),
+        "education": _choice(
+            ["high.school", "university.degree", "basic.9y"], n
+        ),
+        "default": _choice(["no", "yes", "unknown"], n),
+        "housing": _choice(["yes", "no", "unknown"], n),
+        "loan": _choice(["yes", "no", "unknown"], n),
+        "contact": _choice(["cellular", "telephone"], n),
+        "month": _choice(["may", "jun", "jul", "aug"], n),
+        "day_of_week": _choice(
+            ["mon", "tue", "wed", "thu", "fri"], n
+        ),
+        "poutcome": _choice(
+            ["nonexistent", "failure", "success"], n
+        ),
+        "subscribe": _choice_p(["yes", "no"], n, [0.13, 0.87]),
     }
     return pd.DataFrame(data)
+
+
+def _choice(options: list, n: int) -> list:
+    """Shorthand: np.random.choice(...).tolist()."""
+    return np.random.choice(options, n).tolist()  # type: ignore[no-any-return]
+
+
+def _choice_p(options: list, n: int, p: list[float]) -> list:
+    """Shorthand: np.random.choice(...p=...).tolist()."""
+    return np.random.choice(options, n, p=p).tolist()  # type: ignore[no-any-return]
 
 
 @pytest.fixture
@@ -67,17 +83,23 @@ def small_test_df() -> pd.DataFrame:
         "cons_conf_index": np.random.uniform(-50, -30, n).tolist(),
         "lending_rate3m": np.random.uniform(0.5, 5, n).tolist(),
         "nr_employed": np.random.uniform(4900, 5300, n).tolist(),
-        "job": np.random.choice(["admin.", "blue-collar", "technician", "services"], n).tolist(),
-        "marital": np.random.choice(["married", "single", "divorced"], n).tolist(),
-        "education": np.random.choice(["high.school", "university.degree", "basic.9y"], n).tolist(),
-        "default": np.random.choice(["no", "yes", "unknown"], n).tolist(),
-        "housing": np.random.choice(["yes", "no", "unknown"], n).tolist(),
-        "loan": np.random.choice(["yes", "no", "unknown"], n).tolist(),
-        "contact": np.random.choice(["cellular", "telephone"], n).tolist(),
-        "month": np.random.choice(["may", "jun", "jul", "aug"], n).tolist(),
-        "day_of_week": np.random.choice(["mon", "tue", "wed", "thu", "fri"], n).tolist(),
-        "poutcome": np.random.choice(["nonexistent", "failure", "success"], n).tolist(),
-        "subscribe": np.random.choice(["yes", "no"], n, p=[0.13, 0.87]).tolist(),
+        "job": _choice(["admin.", "blue-collar", "technician", "services"], n),
+        "marital": _choice(["married", "single", "divorced"], n),
+        "education": _choice(
+            ["high.school", "university.degree", "basic.9y"], n
+        ),
+        "default": _choice(["no", "yes", "unknown"], n),
+        "housing": _choice(["yes", "no", "unknown"], n),
+        "loan": _choice(["yes", "no", "unknown"], n),
+        "contact": _choice(["cellular", "telephone"], n),
+        "month": _choice(["may", "jun", "jul", "aug"], n),
+        "day_of_week": _choice(
+            ["mon", "tue", "wed", "thu", "fri"], n
+        ),
+        "poutcome": _choice(
+            ["nonexistent", "failure", "success"], n
+        ),
+        "subscribe": _choice_p(["yes", "no"], n, [0.13, 0.87]),
     }
     return pd.DataFrame(data)
 
@@ -117,9 +139,7 @@ def test_evaluate_on_test_returns_metrics(
     assert 0.0 <= metrics["auc"] <= 1.0
 
 
-def test_save_and_load_model(
-    small_train_df: pd.DataFrame, tmp_path: Path
-) -> None:
+def test_save_and_load_model(small_train_df: pd.DataFrame, tmp_path: Path) -> None:
     """save_model then load_model round-trips correctly."""
     import app.model as mod
 

@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir --timeout 120 -i "${PIP_INDEX_URL}" -r requiremen
 
 # Copy application code
 COPY app/ ./app/
-COPY models/ ./models/
+RUN mkdir -p /app/models
 
 # Streamlit default port
 EXPOSE 8501
