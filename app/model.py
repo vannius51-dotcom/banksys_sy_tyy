@@ -116,7 +116,10 @@ def train_and_evaluate(
                 (
                     "classifier",
                     LogisticRegression(
-                        class_weight="balanced", max_iter=2000, random_state=42, n_jobs=-1
+                        class_weight="balanced",
+                        max_iter=2000,
+                        random_state=42,
+                        n_jobs=-1,
                     ),
                 ),
             ]
@@ -127,7 +130,10 @@ def train_and_evaluate(
                 (
                     "classifier",
                     RandomForestClassifier(
-                        class_weight="balanced", random_state=42, n_jobs=-1, n_estimators=200
+                        class_weight="balanced",
+                        random_state=42,
+                        n_jobs=-1,
+                        n_estimators=200,
                     ),
                 ),
             ]

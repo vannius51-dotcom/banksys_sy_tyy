@@ -243,7 +243,11 @@ def plot_time_trends(df: pd.DataFrame, dimension: str) -> go.Figure:
 
     # Also add contact count
     count_df = df.groupby(dimension).size().reset_index(name="联系次数")
-    count_df = count_df.set_index(dimension).loc[rate_df[dimension].tolist()].reset_index()
+    count_df = (
+        count_df.set_index(dimension)
+        .loc[rate_df[dimension].tolist()]
+        .reset_index()
+    )
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig.add_trace(
