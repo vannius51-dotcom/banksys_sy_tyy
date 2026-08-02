@@ -15,7 +15,8 @@ st.markdown("请填写客户信息,系统将基于历史数据训练的模型预
 
 # ── Check model availability ─────────────────────────────
 try:
-    from app.model import MODEL_PATHexcept ImportError:
+    from app.model import MODEL_PATH
+except ImportError:
     st.error("无法导入模型模块,请检查项目结构。")
     st.stop()
 

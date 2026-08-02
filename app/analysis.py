@@ -120,8 +120,7 @@ def plot_categorical_distribution(df: pd.DataFrame, col: str) -> go.Figure:
 
     # Subscription rate
     colors_rate = [
-        "#2ca02c" if v > rate_df["认购率(%)"].mean() else "#d62728"
-        for v in rate_df["认购率(%)"]
+        "#2ca02c" if v > rate_df["认购率(%)"].mean() else "#d62728" for v in rate_df["认购率(%)"]
     ]
     fig.add_trace(
         go.Bar(

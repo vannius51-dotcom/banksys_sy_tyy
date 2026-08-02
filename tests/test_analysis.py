@@ -9,7 +9,8 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.analysis import (    get_overview,
+from app.analysis import (
+    get_overview,
     plot_categorical_distribution,
     plot_correlation_heatmap,
     plot_numeric_distribution,

@@ -8,7 +8,8 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.data_loader import (    CATEGORICAL_COLS,
+from app.data_loader import (
+    CATEGORICAL_COLS,
     NUMERIC_COLS,
     TARGET_COL,
     get_data_dir,
