@@ -4,6 +4,7 @@ line-length = 100
 [tool.ruff.lint]
 ignore = [
     "N999",   # Streamlit pages use emoji in file names
+    "BLE001", # catching Exception is intentional for user-facing error display
 ]
 
 [tool.ruff.format]

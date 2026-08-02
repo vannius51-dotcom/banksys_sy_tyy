@@ -29,7 +29,7 @@ def test_numeric_ranges_covers_prediction_cols() -> None:
     """NUMERIC_RANGES must cover all PREDICTION_NUMERIC_COLS."""
     for col in PREDICTION_NUMERIC_COLS:
         assert col in NUMERIC_RANGES, f"Missing range for {col}"
-        min_v, max_v, default_v, step_v = NUMERIC_RANGES[col]
+        min_v, max_v, default_v, _step_v = NUMERIC_RANGES[col]
         assert min_v < max_v
         assert min_v <= default_v <= max_v
 
