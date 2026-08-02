@@ -68,7 +68,7 @@ def test_get_overview(sample_df: pd.DataFrame) -> None:
     assert result["pos_count"] == 2
     assert result["neg_count"] == 3
     assert result["pos_rate"] == 40.0
-    assert result["col_count"] == 20
+    assert result["col_count"] == 21
 
 
 def test_get_overview_missing(sample_df: pd.DataFrame) -> None:
